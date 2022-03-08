@@ -14,8 +14,8 @@ resource "aws_route_table" "igw_route" {
 
 #route table assosc for pulic subnet A to IGW
 resource "aws_route_table_association" "igw_public_a_cidr" {
-    #this is wat associate the subnet to the desired gateway
-  subnet_id      = aws_subnet.public_a_cidr.id 
+  #this is wat associate the subnet to the desired gateway
+  subnet_id = aws_subnet.public_a_cidr.id
   # specify the route table u created for this association
   route_table_id = aws_route_table.igw_route.id
 }
@@ -27,7 +27,7 @@ resource "aws_route_table" "nat_route_private_a" {
   vpc_id = aws_vpc.main.id
 
   route {
-    cidr_block = "0.0.0.0/0"
+    cidr_block     = "0.0.0.0/0"
     nat_gateway_id = aws_nat_gateway.NAT_public_subnet_a.id
   }
 

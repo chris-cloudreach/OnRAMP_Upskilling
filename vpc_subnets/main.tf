@@ -14,10 +14,10 @@ resource "aws_internet_gateway" "gw" {
 }
 
 resource "aws_subnet" "public_a_cidr" {
-  vpc_id     = aws_vpc.main.id
-  cidr_block = var.public_a_cidr
+  vpc_id                  = aws_vpc.main.id
+  cidr_block              = var.public_a_cidr
   map_public_ip_on_launch = true
-  availability_zone = "${var.region}a"
+  availability_zone       = "${var.region}a"
   tags = {
     Name = "public-subnet"
   }
@@ -27,7 +27,7 @@ resource "aws_subnet" "public_a_cidr" {
 resource "aws_subnet" "private_a_cidr" {
   vpc_id     = aws_vpc.main.id
   cidr_block = var.private_a_cidr
-  
+
   availability_zone = "${var.region}a"
   tags = {
     Name = "private-subnet"
@@ -53,4 +53,26 @@ resource "aws_nat_gateway" "NAT_public_subnet_a" {
   # To ensure proper ordering, it is recommended to add an explicit dependency
   # on the Internet Gateway for the VPC.
   depends_on = [aws_internet_gateway.gw]
+}
+
+#SECURITY GROUP
+resource "aws_security_group" "ICMP_sg_PRIVATE" {
+  name        = "ICMP_sg_PRIVATE"
+  description = "Allow ICMP traffic from my ip address"
+  vpc_id      = aws_vpc.main.id
+
+  #inbound rules
+  ingress {
+    description = "Allow ICMP IN"
+    from_port   = -1
+    to_port     = -1
+    protocol    = "icmp"
+    cidr_blocks = ["86.15.241.215/32"]
+
+  }
+
+
+  tags = {
+    Name = "ICMP_sg_PRIVATE"
+  }
 }
