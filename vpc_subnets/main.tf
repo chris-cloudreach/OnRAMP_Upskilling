@@ -67,7 +67,7 @@ resource "aws_security_group" "ICMP_sg_PRIVATE" {
     from_port   = -1
     to_port     = -1
     protocol    = "icmp"
-    cidr_blocks = ["86.15.241.215/32"]
+    cidr_blocks = ["add your private ip address block"]
 
   }
 
