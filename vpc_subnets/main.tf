@@ -56,8 +56,8 @@ resource "aws_nat_gateway" "NAT_public_subnet_a" {
 }
 
 #SECURITY GROUP
-resource "aws_security_group" "ICMP_sg_PRIVATE" {
-  name        = "ICMP_sg_PRIVATE"
+resource "aws_security_group" "ICMP_sg" {
+  name        = "ICMP_sg"
   description = "Allow ICMP traffic from my ip address"
   vpc_id      = aws_vpc.main.id
 
@@ -67,12 +67,12 @@ resource "aws_security_group" "ICMP_sg_PRIVATE" {
     from_port   = -1
     to_port     = -1
     protocol    = "icmp"
-    cidr_blocks = ["add your private ip address block"]
+    cidr_blocks = ["add the allowed cidr here"]
 
   }
 
 
   tags = {
-    Name = "ICMP_sg_PRIVATE"
+    Name = "ICMP_sg"
   }
 }

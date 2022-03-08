@@ -27,3 +27,8 @@ variable "private_a_cidr" {
   description = "The cidr of my public a subnet"
   type        = string
 }
+
+variable "key_name" {
+  description = "The name of my keypair"
+  type        = string
+}
