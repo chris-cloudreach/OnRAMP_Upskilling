@@ -1,0 +1,30 @@
+# name: Onramp upskilling
+# on:
+#   push:
+#     branches:
+#       - VPC_private_public_subnets
+# jobs:
+#   terraform_deployment_of_APIGW_COGNITO_DDB_LAMBDA:
+#     runs-on: ubuntu-latest
+#     steps: # The list of steps to take for executionnn
+#       - name: Authenticate with AWS
+#         uses: aws-actions/configure-aws-credentials@v1
+#         with:
+#           aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY }}
+#           aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+#           aws-region: eu-west-2
+
+#       - name: Clone your code in the pipeline
+#         uses: actions/checkout@v2
+
+#       - name: Terraform setup
+#         uses: hashicorp/setup-terraform@v1
+
+#       - name: Init
+#         id: init
+#         run: terraform init
+
+#       - name: Plan
+#         id: plan
+#         run: terraform plan 
+#         continue-on-error: true
