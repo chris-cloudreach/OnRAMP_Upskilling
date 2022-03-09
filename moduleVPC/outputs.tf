@@ -9,3 +9,7 @@ output "public_subnet_a_id" {
 output "private_subnet_a_id" {
     value = aws_subnet.private_a_cidr.id
 }
+
+output "SG_id" {
+    value = aws_security_group.ICMP_sg.id
+}
