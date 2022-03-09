@@ -67,7 +67,7 @@ resource "aws_security_group" "ICMP_sg" {
     from_port   = -1
     to_port     = -1
     protocol    = "icmp"
-    cidr_blocks = ["add the allowed cidr here"]
+    cidr_blocks = ["86.15.241.215/32"]
 
   }
 
